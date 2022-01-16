@@ -23,6 +23,7 @@ const routes = [
     path: '/details',
     name: 'Details',
     component: Details,
+    props: true,
   },
 ];
 

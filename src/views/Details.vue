@@ -1,19 +1,52 @@
 <template class="bg-dark">
 <div class="container">
-  <div class="about">
-    <h2 class="pt-5">One of the most popular websites at NASA</h2>
-      <p class="pt-5 text-center">is <strong>the Astronomy Picture of the Day. </strong>
-      In fact, this website is one of the most popular websites across all federal agencies.
-      It has the popular appeal of a Justin Bieber video.
-      This endpoint structures the APOD imagery and associated metadata
-      so that it can be repurposed for other applications.
-      In addition, if the concept_tags parameter is set to True,
-      then keywords derived from the image explanation are returned.
-      These keywords could be used as auto-generated hashtags for twitter or instagram feeds;
-      but generally help with discoverability
-      of relevant imagery.</p>
-      <p class="text-center"> THX NASA</p>
-  </div>
+  <b-button @click="handleGet">go</b-button>
+      <div id="post" class="b-container border border-lights"
+        v-for="x in player_stats" :key="x" justify="center" align="center">
+        <h4> statistic: {{x.ast}}
+      </h4>
+    </div>
+
   </div>
 </template>
+
+<script>
+const axios = require('axios');
+const debounce = require('lodash.debounce');
+
+export default
+{
+  name: 'Details',
+  components: { },
+  data() {
+    return {
+      player_id: '',
+      player_stats: [],
+    };
+  },
+  methods: {
+    handleGet: debounce(function handle() {
+      // this.loading = true;
+        axios.get('https://www.balldontlie.io/api/v1/season_averages?season=2018&player_ids[]=1', {
+        params: {
+          date: '',
+          api_key: '',  // key is in priv repo
+        },
+
+      })
+        .then((response) => {
+          console.log(response.data.data);
+          this.player_stats = response.data.data
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, 700),
+  },
+};
+
+</script>
+
+<style scoped>
+</style>
 
