@@ -1,12 +1,9 @@
 <template>
-  <div class="app">
-    <router-view>
-      <div>
+  <div id="app">
+      <div id="main" class="b-container text-center">
         <Home/>
       </div>
-     </router-view>
   </div>
- 
 
 </template>
 
@@ -21,3 +18,9 @@ export default
 };
 
 </script>
+
+<style>
+body {
+  background-color: bisque;
+}
+</style>
