@@ -1,4 +1,6 @@
-# bal_api
+# bal_api NBA PLAYERS DEPLOYED ON HEROKu
+
+https://ballapi.herokuapp.com/
 
 ## Project setup
 ```
